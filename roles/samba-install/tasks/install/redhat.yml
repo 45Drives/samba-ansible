@@ -1,0 +1,45 @@
+---
+- name: Install samba packages
+  block:
+    - name: redhat | install samba
+      package:
+        name: "{{ item }}"
+        state: "{{ (upgrade_samba_packages|bool) | ternary('latest','present') }}"
+      register: result
+      until: result is succeeded
+      with_items:
+        - attr
+        - samba
+
+    - name: remove sssd-libwbclient
+      package:
+        name: sssd-libwbclient
+        state: absent
+
+    - name: redhat | install packages for domain integration
+      package:
+        name: "{{ item }}"
+        state: "{{ (upgrade_samba_packages|bool) | ternary('latest','present') }}"
+      register: result
+      until: result is succeeded
+      with_items:
+        - samba-winbind
+        - samba-winbind-clients
+        - sssd
+        - oddjob
+        - oddjob-mkhomedir
+        - krb5-workstation
+        - sssd-winbind-idmap
+      when:
+        - domain_member | bool
+
+    - name: redhat | install ctdb
+      package:
+        name: "{{ item }}"
+        state: "{{ (upgrade_samba_packages|bool) | ternary('latest','present') }}"
+      register: result
+      until: result is succeeded
+      with_items:
+        - ctdb
+      when:
+        - cluster_member | bool

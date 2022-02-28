@@ -1,0 +1,109 @@
+---
+- name: check if already joined to domain.
+  debug:
+    msg: "check to see if domain is joined"
+
+- name: Configuring realmd.conf
+  template:
+    src: etc/realmd.conf.j2
+    dest: /etc/realmd.conf
+    owner: "root"
+    group: "root"
+    mode: 0644
+
+- name: Restart realmd service
+  service:
+    name: realmd
+    state: restarted
+
+- name: Write smb.conf for domain join
+  template:
+    src: etc/samba/smb.conf.j2
+    dest: /etc/samba/smb.conf
+    owner: "root"
+    group: "root"
+    mode: 0644
+
+- name: Write net realmd wrapper script
+  template:
+    src: usr/bin/net-realmd-wrapper
+    dest: /usr/bin/net-realmd-wrapper
+    owner: "root"
+    group: "root"
+    mode: 0755
+
+# - name: Join Single Server to Domain
+#   block:
+- name: Join domain via {{ join_method }} w. Kerberos Auth 
+  command: /usr/sbin/realm join {{ realm }} --membership-software=samba
+  throttle: 1
+  when:
+    join_auth == 'kerberos'
+
+- name: join domain via {{ join_method }} w. password Auth
+  expect:
+    command: /usr/sbin/realm join {{ realm }} --membership-software=samba -U {{ join_user }}
+    responses:
+      Password for *: "{{ join_password }}"
+  throttle: 1
+  when:
+    join_auth == 'password'
+
+  # when:
+  #   - not cluster_member
+
+# - name: Join Cluster to Domain
+#   block:
+#   - name: Join domain via {{ join_method }} w. Kerberos Auth 
+#     command: /usr/sbin/realm join {{ realm }} --membership-software=samba
+#     run_once: true
+#     when:
+#       join_auth == 'kerberos'
+
+#   - name: join domain via {{ join_method }} w. password Auth
+#     expect:
+#       command: /usr/sbin/realm join {{ realm }} --membership-software=samba -U {{ join_user }}
+#       responses:
+#         Password for *: "{{ join_password }}"
+#     run_once: true
+#     when:
+#       join_auth == 'password'
+
+#   - name: check if already joined
+#     command: /bin/bash -c "/usr/sbin/realm list"
+#     register: domain_check
+
+
+#   when:
+#     - cluster_member
+
+# authselect is responsible for configuring nsswitch.conf, realm uses this when joining the domain
+# authselect does not exist for debian derivatives, so nsswitch.conf is generated here
+- name: configure nsswitch.conf in Ubuntu
+  template:
+    src: etc/nsswitch.conf.j2
+    dest: /etc/nsswitch.conf
+    owner: "root"
+    group: "root"
+    mode: 0644
+  when:
+    - ansible_facts['os_family'] == 'Debian'
+
+- name: Flush sssd cache
+  block: 
+    - name: stop sssd
+      service:
+        name: sssd
+        state: stopped
+
+    - name: remove sssd cache
+      command: rm -f /var/lib/sss/db/*
+    
+    - name: start sssd
+      service:
+        name: sssd
+        state: started
+  when:
+    - join_method == 'sssd'
+
+

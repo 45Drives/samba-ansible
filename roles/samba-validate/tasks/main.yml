@@ -1,0 +1,70 @@
+---
+- name: fail if join_method is misconfigured when domain_member is true
+  fail:
+    msg: "join_method must be either 'sssd' or 'winbind'"
+  when: 
+    - join_method not in ['sssd','winbind']
+    - domain_member | bool
+    
+- name: fail if join_auth is misconfigured when domain_member is true
+  fail:
+    msg: "join_auth must be either 'kerberos' or 'password'"
+  when: 
+    - join_auth not in ['kerberos','password']
+    - domain_member | bool
+
+- name: validate join username and password varibles
+  block:
+    - name: fail if join_user is not set when join_auth is 'password'
+      fail:
+        msg: "join_user must be specified when using password authentication"
+      when: (join_user is not defined) or (join_user|length == 0)
+
+    - name: fail if join_password is not set when join_auth is 'password'
+      fail:
+        msg: "join_password must be specified when using password authentication"
+      when: (join_password is not defined) or (join_password|length == 0)
+  when: 
+    - join_auth == 'password'
+    - domain_member | bool
+
+- name: validate kerberos ticket when join_auth is 'kerberos'
+  block:
+    - name: validate kerberos ticket with 'klist -s'
+      command: klist -s
+      register: klist_output
+      failed_when: false
+
+    - name: Fail if invalid kerberos ticket
+      fail:
+        msg: |
+          "Invalid kerberos ticket (either expired or non-existent), create a new one with 'kinit <user@realm> and run this playbook again or set join_auth to 'password' to avoid kerberos authentication"
+      when:
+        - klist_output.rc != 0
+  when:
+    - join_auth == 'kerberos'
+    - domain_member | bool
+
+- name: fail if netbios and workgroup are the same
+  fail:
+    msg: "netbios_name and workgroup cannot be the same"
+  when: netbios_name|lower == workgroup|lower
+
+- name: fail if ctdb VIP interface does not exist
+  fail:
+    msg: "ctdb VIP interface [{{ item.vip_interface }}] does not exist on this host"
+  when: item.vip_interface not in ansible_interfaces
+  with_items:
+    - "{{ ctdb_public_addresses }}"
+
+# Add task to ensure backend_filesystem is correct
+- name: fail if backend_filesystem is misconfigured 
+  fail:
+    msg: "backend_filesystem must be either 'cephfs' or 'zfs' or 'generic'"
+  when: 
+    - backend_filesystem not in ['cephfs','zfs','generic']
+
+# add task to ensure there is no trailing slash on shared_storage_mountpoint
+
+# add task to ensure something is mounted on shared_storage_mountpoint
+

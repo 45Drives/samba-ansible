@@ -1,0 +1,45 @@
+---
+domain_member: false
+cluster_member: false
+join_method: 'sssd'
+join_auth: 'kerberos'
+realm: '45lab.local'
+workgroup: '45lab'
+
+# idmap backends
+#default tdb2
+tdb2_idmap_range: 10000-99999
+domain_idmap_range: 200000-2147483647
+# when auto_idmapping is true and join_method is sssd, idmap backend is set to 'sss' and 'ldap_idmapping' is set to false is /etc/sssd/sssd.conf
+# when auto_idmapping is true and join_method is winbind, idmap backend is set to 'rid'
+# when auto_idmapping is false and join_method is sssd, idmap backend is set to 'sss' and 'ldap_idmapping' is set to true is /etc/sssd/sssd.conf
+# when auto_idmapping is false and join_method is winbind, idmap backend is set to 'ad', and idmap mode is set to rfc2307
+auto_id_mapping: true
+enumerate_ids: false
+fully_qualified_names: false
+enable_windows_acl: true
+
+# ctdb 
+ctdb_lock_name: 'ctdblock'
+ctdb_public_addresses:
+  - vip_address: '192.168.103.10'
+    vip_interface: 'eth0'
+    subnet_mask: '16'
+ctdb_tunables:
+  - key: 'ControlTimeout'
+    value: '15'
+  - key: 'ElectionTimeout'
+    value: '2'
+  - key: 'KeepaliveInterval'
+    value: '1'
+  - key: 'KeepaliveLimit'
+    value: '3'
+  - key: 'MonitorInterval'
+    value: '5'
+  - key: 'TakeoverTimeout'
+    value: '5'
+
+
+# backend_filesystem: zfs|cephfs|generic
+backend_filesystem: cephfs
+shared_storage_mountpoint: /mnt/cephfs

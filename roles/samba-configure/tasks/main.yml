@@ -1,0 +1,10 @@
+---
+- include: configure/ctdb.yml
+  when:
+    - cluster_member | bool
+
+- include: configure/domain_join.yml
+  when:
+    - domain_member | bool
+
+- include: configure/samba.yml

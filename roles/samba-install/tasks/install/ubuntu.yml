@@ -1,0 +1,42 @@
+---
+- name: Install samba packages
+  block:
+    - name: ubuntu | install samba
+      package:
+        name: "{{ item }}"
+        state: "{{ (upgrade_samba_packages|bool) | ternary('latest','present') }}"
+      register: result
+      until: result is succeeded
+      with_items:
+        - samba
+
+    - name: ubuntu | install packages for domain integration
+      package:
+        name: "{{ item }}"
+        state: "{{ (upgrade_samba_packages|bool) | ternary('latest','present') }}"
+      register: result
+      until: result is succeeded
+      with_items:
+        - winbind
+        - oddjob
+        - oddjob-mkhomedir
+        - krb5-config
+        - krb5-user
+        - libnss-winbind
+        - libpam-winbind
+        - sssd-tools
+        - libnss-sss
+        - libpam-sss
+      when:
+        - domain_member | bool
+
+    - name: ubuntu | install ctdb
+      package:
+        name: "{{ item }}"
+        state: "{{ (upgrade_samba_packages|bool) | ternary('latest','present') }}"
+      register: result
+      until: result is succeeded
+      with_items:
+        - ctdb
+      when:
+        - cluster_member | bool

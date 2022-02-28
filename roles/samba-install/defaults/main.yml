@@ -1,0 +1,5 @@
+---
+offline_install: false
+domain_member: false
+cluster_member: false
+upgrade_samba_packages: true

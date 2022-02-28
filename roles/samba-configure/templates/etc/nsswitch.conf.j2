@@ -1,0 +1,28 @@
+# DONT EDIT THIS FILE. IT IS MANAGED BY ANSIBLE
+# ANY EDITS WILL BE LOST WHEN THIS PLAYBOOK IS RUN
+{% if join_method == 'sssd' %}
+passwd:     sss files systemd
+group:      sss files systemd
+netgroup:   sss files
+automount:  sss files
+services:   sss files
+# In order of likelihood of use to accelerate lookup.
+shadow:     files sss
+{% elif join_method == 'winbind' %}
+passwd:     winbind files systemd
+group:      winbind files systemd
+netgroup:   winbind files
+automount:  winbind files
+services:   winbind files
+{% endif %}
+
+hosts:      files dns myhostname
+
+aliases:    files
+ethers:     files
+gshadow:    files
+
+networks:   files dns
+protocols:  files
+publickey:  files
+rpc:        files

@@ -1,0 +1,8 @@
+---
+- name: start single samba server
+  include: start_single_samba.yml
+  when: not cluster_member
+
+- name: start clustered samba server
+  include: start_clustered_samba.yml
+  when: cluster_member

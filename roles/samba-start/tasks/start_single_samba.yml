@@ -1,0 +1,31 @@
+---
+- name: Start samba service (redhat)
+  service: 
+    name: smb
+    state: restarted
+    enabled: yes
+  when:
+    - ansible_facts['os_family'] == 'RedHat'
+
+- name: Start samba service (debian)
+  service:
+    name: smbd
+    state: restarted
+    enabled: yes
+  when:
+    - ansible_facts['os_family'] == 'Debian'
+
+- name: Stop winbind when Ubuntu
+  service:
+    name: winbind
+    state: stopped
+  when:
+    - ansible_facts['os_family'] == 'Debian'
+
+- name: Start winbind service 
+  service: 
+    name: winbind
+    state: started
+    enabled: yes
+  when:
+    - domain_member | bool

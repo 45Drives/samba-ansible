@@ -1,0 +1,27 @@
+[active-directory]
+default-client = {{ join_method }}
+
+[paths]
+net = /usr/bin/net-realmd-wrapper
+
+[{{ realm|lower }}]
+{% if fully_qualified_names %}
+fully-qualified-names = yes
+{% else %}
+fully-qualified-names = no
+{% endif %}
+{% if auto_id_mapping %}
+automatic-id-mapping = yes
+{% else %}
+automatic-id-mapping = no
+{% endif %}
+
+{% if 'Debian' == ansible_facts['os_family'] %}
+[commands]
+sssd-enable-logins = /usr/bin/sh -c "/usr/sbin/pam-auth-update --enable mkhomedir && /usr/bin/systemctl enable --now oddjobd.service"
+{% endif %}
+
+{% if 'sssd' == join_method %}
+[providers]
+samba = no
+{% endif %} 

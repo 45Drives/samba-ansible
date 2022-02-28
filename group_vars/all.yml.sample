@@ -1,0 +1,39 @@
+# ---
+# # Offline Mode
+# offline_install: false
+
+# # Update samba packages if already installed
+# upgrade_samba_packages: true
+
+# # Roles
+# domain_member: true
+# cluster_member: true
+
+# # Join Method
+# # join_method: sssd|winbind
+# join_method: 'winbind'
+# # Join Authorization
+# # join_auth: kerberos|password
+# join_auth: 'kerberos'
+# join_user: ''
+# join_password: ''
+# # Domain Name
+# realm: '45lab.local'
+# workgroup: '45lab'
+# # Server Name
+# netbios_name: 'smb-srv'
+
+# auto_id_mapping: true
+# enumerate_ids: false
+# fully_qualified_names: false
+# enable_windows_acl: false
+
+# # ctdb 
+# ctdb_public_addresses:
+#   - vip_address: '192.168.185.10'
+#     vip_interface: 'ens18'
+#     subnet_mask: '16'
+
+# # backend_filesystem: zfs|cephfs|generic
+# backend_filesystem: generic
+# shared_storage_mountpoint: /mnt/nfs

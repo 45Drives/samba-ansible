@@ -1,0 +1,44 @@
+---
+- name: Start Clustered Samba | Disable smb (RedHat)
+  systemd:
+    name: smb
+    enabled: no
+  when: ansible_os_family in ['RedHat']
+
+- name: Start Clustered Samba | Disable smb (Debian)
+  systemd:
+    name: smbd
+    enabled: no
+  when: ansible_os_family == 'Debian'
+
+- name: Start Clustered Samba | Disable winbind 
+  systemd:
+    name: winbind
+    enabled: no
+  when: domain_member
+
+- name: Start Clustered Samba | link samba ctdb event scripts
+  file:
+    src: /usr/share/ctdb/events/legacy/50.samba.script
+    dest: /etc/ctdb/events/legacy/50.samba.script
+    state: link
+
+- name: Start Clustered Samba | link winbind ctdb event scripts
+  file:
+    src: /usr/share/ctdb/events/legacy/49.winbind.script
+    dest: /etc/ctdb/events/legacy/49.winbind.script
+    state: link
+  when:
+    - domain_member | bool
+
+- name: Start Clustered Samba | Create samba ctdb event options
+  copy:
+    dest: /etc/ctdb/events/legacy/50.samba.options
+    content: |
+      CTDB_SAMBA_SKIP_SHARE_CHECK=yes
+
+- name: Start Clustered Samba | enable & restart ctdb
+  systemd:
+    name: ctdb
+    state: restarted
+    enabled: yes

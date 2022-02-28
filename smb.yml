@@ -1,0 +1,79 @@
+---
+- hosts:
+    - smbs
+
+  gather_facts: false
+  any_errors_fatal: true
+  become: true
+
+  vars:
+    delegate_facts_host: True
+
+  pre_tasks:
+
+    - name: set samba setup 'In Progress'
+      run_once: true
+      set_stats:
+        data:
+          installer_phase_samba:
+            status: "In Progress"
+            start: "{{ lookup('pipe', 'date +%Y%m%d%H%M%SZ') }}"
+
+    - name: gather facts
+      setup:
+      when:
+        - not delegate_facts_host | bool
+      tags:
+        - always
+
+    - name: gather and delegate facts
+      setup:
+      delegate_to: "{{ item }}"
+      delegate_facts: True
+      with_items: "{{ groups['all'] }}"
+      run_once: true
+      when:
+        - delegate_facts_host | bool
+      tags:
+        - always
+
+  tasks:
+    - import_role:
+        name: samba-defaults
+      tags:
+        - always
+    - import_role:
+        name: samba-validate
+      tags:
+        - always
+        - validate
+    - import_role:
+        name: samba-install
+      tags:
+        - install
+    - import_role:
+        name: samba-configure
+      tags:
+        - configure
+    - import_role:
+        name: samba-start
+      tags:
+        - start
+    # - import_role:
+    #     name: samba-backend
+    #   tags:
+    #     - backend
+    # - import_role:
+    #     name: samba-shares
+    #   tags:
+    #     - shares
+
+  post_tasks:
+    - name: set samba setup 'Complete'
+      run_once: true
+      set_stats:
+        data:
+          installer_phase_samba:
+            status: "Complete"
+            end: "{{ lookup('pipe', 'date +%Y%m%d%H%M%SZ') }}"
+

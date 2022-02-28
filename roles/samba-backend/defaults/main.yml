@@ -1,0 +1,7 @@
+---
+# backend_filesystem: zfs|cephfs
+
+## Cephfs Options
+#samba_keyring:
+#  - { name: client.samba, caps: { mds: "allow r path=/, allow rwps path=/fsgw", mon: "allow r", osd: "allow *" }, mode: "0600" }
+#shared_storage_mountpoint: /mnt/cephfs

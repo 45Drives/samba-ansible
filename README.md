@@ -31,26 +31,13 @@ Options are:
 
 
 ### ID Mapping
-# when auto_idmapping is true and join_method is sssd, idmap backend is set to 'sss' and 'ldap_idmapping' is set to false is /etc/sssd/sssd.conf
-# when auto_idmapping is true and join_method is winbind, idmap backend is set to 'rid'
-# when auto_idmapping is false and join_method is sssd, idmap backend is set to 'sss' and 'ldap_idmapping' is set to true is /etc/sssd/sssd.conf
-# when auto_idmapping is false and join_method is winbind, idmap backend is set to 'ad', and idmap mode is set to rfc2307
+* when auto_idmapping is true and join_method is sssd, idmap backend is set to 'sss' and 'ldap_idmapping' is set to false is /etc/sssd/sssd.conf
+* when auto_idmapping is true and join_method is winbind, idmap backend is set to 'rid'
+* when auto_idmapping is false and join_method is sssd, idmap backend is set to 'sss' and 'ldap_idmapping' is set to true is /etc/sssd/sssd.conf
+* when auto_idmapping is false and join_method is winbind, idmap backend is set to 'ad', and idmap mode is set to rfc2307
+```
 auto_id_mapping: true
 enumerate_ids: false
 fully_qualified_names: false
 enable_windows_acl: true
-
-
-## Troublshooting
-If login failure to samba server and logs look like:
-```
-Feb 21 15:11:03 smb-dev1-rl smbd[1522]: [2022/02/21 15:11:03.632695,  0] ../../source3/auth/token_util.c:567(add_local_groups)
-Feb 21 15:11:03 smb-dev1-rl smbd[1522]:   add_local_groups: SID S-1-5-21-2840915818-1739437080-3997617182-1103 -> getpwuid(10000) failed, is nsswitch configured?
-```
-
-Solution is to stop winbind, flush winbind cache and start again
-```
-systemctl stop winbind
-net flush cache
-systemctl start winbind
 ```

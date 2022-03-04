@@ -86,3 +86,4 @@
   wait_for:
     delay: 30  #we wait enough time for ctdb to recover and start hosting VIP
     timeout: 0
+  

@@ -58,6 +58,16 @@
   become: true
 
   tasks:
+  # Is in domain (realm list) ?
+  # then leave
+  - name: check if already joined
+    command: /bin/bash -c "/usr/sbin/realm list"
+    register: domain_check
+
+  - name: leave domain
+    command: /bin/bash -c "/usr/sbin/realm leave"
+    when: domain_check.stdout != ""
+
   - name: check for ctdb
     stat:
       path: /usr/lib/systemd/system/ctdb.service

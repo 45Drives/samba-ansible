@@ -53,7 +53,9 @@
 - name: fail if ctdb VIP interface does not exist
   fail:
     msg: "ctdb VIP interface [{{ item.vip_interface }}] does not exist on this host"
-  when: item.vip_interface not in ansible_interfaces
+  when:
+    - item.vip_interface not in ansible_interfaces
+    - cluster_member | bool
   with_items:
     - "{{ ctdb_public_addresses }}"
 

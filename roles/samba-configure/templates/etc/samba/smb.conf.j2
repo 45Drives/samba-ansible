@@ -8,7 +8,8 @@
   realm = {{ realm|upper }}
   workgroup = {{ workgroup|upper }}
   security = ads
-  kerberos method = system keytab
+  kerberos method = secrets and keytab
+  dedicated keytab file = /etc/krb5.keytab
 {% else %}
   security = user
 {% endif %}

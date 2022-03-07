@@ -19,6 +19,7 @@ automatic-id-mapping = no
 {% if 'Debian' == ansible_facts['os_family'] %}
 [commands]
 sssd-enable-logins = /usr/bin/sh -c "/usr/sbin/pam-auth-update --enable mkhomedir && /usr/bin/systemctl enable --now oddjobd.service"
+winbind-enable-logins = /usr/bin/sh -c "/usr/sbin/pam-auth-update --enable mkhomedir && /usr/bin/systemctl enable --now oddjobd.service"
 {% endif %}
 
 {% if 'sssd' == join_method %}

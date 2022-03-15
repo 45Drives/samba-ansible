@@ -1,0 +1,31 @@
+---
+- name: open firewall ports
+  when: manage_firewall | bool
+  block:
+    - name: open samba firewall port
+      firewalld:
+        service: samba
+        zone: "{{ samba_firewall_zone }}"
+        permanent: true
+        immediate: true
+        state: enabled
+
+    - name: open winbind firewall port
+      firewalld:
+        service: winbind
+        zone: "{{ samba_firewall_zone }}"
+        permanent: true
+        immediate: true
+        state: enabled
+      when:
+        domain_member | bool
+
+    - name: open ctdb firewall port
+      firewalld:
+        service: ctdb
+        zone: "{{ ctdb_firewall_zone }}"
+        permanent: true
+        immediate: true
+        state: enabled
+      when:
+        cluster_member | bool

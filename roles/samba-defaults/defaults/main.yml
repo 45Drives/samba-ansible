@@ -1,4 +1,15 @@
 ---
+# Offline Mode
+offline_install: false
+
+# Update samba packages if already installed
+upgrade_samba_packages: true
+
+# Manage Firewall
+manage_firewall: true
+samba_firewall_zone: public
+ctdb_firewall_zone: public
+
 domain_member: false
 cluster_member: false
 join_method: 'sssd'

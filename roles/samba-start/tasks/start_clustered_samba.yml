@@ -42,3 +42,10 @@
     name: ctdb
     state: restarted
     enabled: yes
+
+# Wait for ctdb to go healthy
+- name: config_ctdb | wait for CTDB to go healthy
+  wait_for:
+    delay: 30  #we wait enough time for ctdb to recover and start hosting VIP
+    timeout: 0
+  

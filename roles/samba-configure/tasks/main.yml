@@ -1,10 +1,12 @@
 ---
-- include: configure/ctdb.yml
+- include: firewall.yml
+
+- include: ctdb.yml
   when:
     - cluster_member | bool
 
-- include: configure/domain_join.yml
+- include: domain_join.yml
   when:
     - domain_member | bool
 
-- include: configure/samba.yml
+- include: samba.yml

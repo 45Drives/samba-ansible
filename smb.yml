@@ -59,6 +59,13 @@
         name: samba-start
       tags:
         - start
+    ## MOVE INTO BACKEND ROLE EVANTUALLY
+    - name: Grant the SeDiskOperatorPrivilege Privilege for windows side ACLs
+      command: net sam rights grant "{{ workgroup|upper }}\{{ item }}" SeDiskOperatorPrivilege
+      with_items: "{{ share_admins }}"
+      when: 
+        - enable_windows_acl | bool
+        - domain_member | bool
     # - import_role:
     #     name: samba-backend
     #   tags:

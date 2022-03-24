@@ -40,3 +40,11 @@
         - ctdb
       when:
         - cluster_member | bool
+
+- name: Install ceph client packages
+  package:
+    name: "{{ ceph_pkgs | unique }}"
+    state: "latest"
+  register: result
+  until: result is succeeded
+  when: backend_filesystem == "cephfs"

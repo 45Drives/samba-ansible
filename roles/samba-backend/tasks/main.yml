@@ -1,0 +1,12 @@
+---
+- name: configure cephfs backend
+  include: backend/cephfs.yml
+  when: backend_filesystem == "cephfs"
+
+- name: configure zfs backend
+  include: backend/cephfs.yml
+  when: backend_filesystem == "zfs"
+
+- name: configure generic backend
+  include: backend/generic.yml
+  when: backend_filesystem == "generic"

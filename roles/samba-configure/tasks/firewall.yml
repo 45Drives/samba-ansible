@@ -10,16 +10,6 @@
         immediate: true
         state: enabled
 
-    - name: open winbind firewall port
-      firewalld:
-        service: winbind
-        zone: "{{ samba_firewall_zone }}"
-        permanent: true
-        immediate: true
-        state: enabled
-      when:
-        domain_member | bool
-
     - name: open ctdb firewall port
       firewalld:
         service: ctdb

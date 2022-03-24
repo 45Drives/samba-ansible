@@ -66,7 +66,10 @@
   when: 
     - backend_filesystem not in ['cephfs','zfs','generic']
 
+# add task that fails if backend_filesystem is cephfs but admin keyring is not present
+
 # add task to ensure there is no trailing slash on shared_storage_mountpoint
 
 # add task to ensure something is mounted on shared_storage_mountpoint
+
 

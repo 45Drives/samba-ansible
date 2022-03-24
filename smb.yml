@@ -66,10 +66,10 @@
       when: 
         - enable_windows_acl | bool
         - domain_member | bool
-    # - import_role:
-    #     name: samba-backend
-    #   tags:
-    #     - backend
+    - import_role:
+        name: samba-backend
+      tags:
+        - backend
     # - import_role:
     #     name: samba-shares
     #   tags:

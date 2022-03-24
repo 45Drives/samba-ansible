@@ -1,0 +1,5 @@
+---
+ceph_pkgs:
+  - ceph-fuse
+  - ceph-common
+  - cephfs-shell

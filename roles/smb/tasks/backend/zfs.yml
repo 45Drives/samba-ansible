@@ -1,4 +1,0 @@
----
-- name: configure for zfs backend fs
-  debug:
-    msg: "configured zfs backend fs"

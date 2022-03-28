@@ -1,4 +1,4 @@
 ---
 - name: configure for generic backend fs
   debug:
-    msg: "configured generic backend fs"
+    msg: "placeholder for generic shared filesystems"

@@ -23,15 +23,14 @@ join_method: 'sssd'
 join_auth: 'kerberos'
 realm: '45lab.local'
 workgroup: '45lab'
+# Server Name ; This varible is ignored when not a cluster member and NetBIOS name is set to the hostname of the server
+netbios_name: 'CTDBCLUSTER'
+server_string: "Samba %v"
 
 # idmap backends
 #default tdb2
 tdb2_idmap_range: 10000-99999
 domain_idmap_range: 200000-2147483647
-# when auto_idmapping is true and join_method is sssd, idmap backend is set to 'sss' and 'ldap_idmapping' is set to false is /etc/sssd/sssd.conf
-# when auto_idmapping is true and join_method is winbind, idmap backend is set to 'rid'
-# when auto_idmapping is false and join_method is sssd, idmap backend is set to 'sss' and 'ldap_idmapping' is set to true is /etc/sssd/sssd.conf
-# when auto_idmapping is false and join_method is winbind, idmap backend is set to 'ad', and idmap mode is set to rfc2307
 auto_id_mapping: true
 enumerate_ids: false
 fully_qualified_names: false
@@ -57,10 +56,8 @@ ctdb_tunables:
   - key: 'TakeoverTimeout'
     value: '5'
 
-
-# backend_filesystem: zfs|cephfs|generic
+# backend_filesystem: cephfs|generic
 backend_filesystem: cephfs
 shared_storage_mountpoint: /mnt/cephfs
-
-cephfs_samba_keyring:
- - { name: client.samba, caps: { mds: "allow r path=/, allow rwps path=/fsgw", mon: "allow r", osd: "allow *" }, mode: "0600" }
+cephfs_samba_keyring: 
+  - { name: client.samba, caps: { mds: "allow r path=/, allow rwps path=/fsgw", mon: "allow r", osd: "allow *" }, mode: "0600" }

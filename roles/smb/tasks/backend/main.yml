@@ -1,0 +1,19 @@
+---
+- name: Grant the SeDiskOperatorPrivilege Privilege for windows side ACLs
+  command: net sam rights grant "{{ workgroup|upper }}\{{ item }}" SeDiskOperatorPrivilege
+  with_items: "{{ share_admins }}"
+  when: 
+    - enable_windows_acl | bool
+    - domain_member | bool
+
+- name: configure cephfs backend
+  include: cephfs.yml
+  when: backend_filesystem == "cephfs"
+
+- name: configure zfs backend
+  include: cephfs.yml
+  when: backend_filesystem == "zfs"
+
+- name: configure generic backend
+  include: generic.yml
+  when: backend_filesystem == "generic"

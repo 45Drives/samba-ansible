@@ -14,7 +14,7 @@
     caps: "{{ item.caps }}"
     cluster: "ceph"
     secret: "{{ item.key | default('') }}"
-  with_items: "{{ samba_keyring }}"
+  with_items: "{{ cephfs_samba_keyring }}"
 
 - name: configure_cephfs_backend | Get samba secret for cephfs mount
   command: "ceph auth get-key client.samba"

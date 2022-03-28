@@ -1,0 +1,20 @@
+---
+- name: include validate tasks 
+  include: validate/main.yml
+  tags: always
+
+- name: include install tasks
+  include: install/main.yml
+  tags: install
+
+- name: include configure tasks
+  include: configure/main.yml
+  tags: configure
+
+- name: include service start tasks
+  include: start/main.yml
+  tags: start
+
+- name: include backend tasks
+  include: backend/main.yml
+  tags: backend

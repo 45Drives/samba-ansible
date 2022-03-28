@@ -41,8 +41,8 @@
         mode: 0644
 
     - name: Write net realmd wrapper script
-      template:
-        src: usr/bin/net-realmd-wrapper
+      copy:
+        src: net-realmd-wrapper
         dest: /usr/bin/net-realmd-wrapper
         owner: "root"
         group: "root"

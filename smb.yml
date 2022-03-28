@@ -39,41 +39,7 @@
 
   tasks:
     - import_role:
-        name: samba-defaults
-      tags:
-        - always
-    - import_role:
-        name: samba-validate
-      tags:
-        - always
-        - validate
-    - import_role:
-        name: samba-install
-      tags:
-        - install
-    - import_role:
-        name: samba-configure
-      tags:
-        - configure
-    - import_role:
-        name: samba-start
-      tags:
-        - start
-    ## MOVE INTO BACKEND ROLE EVANTUALLY
-    - name: Grant the SeDiskOperatorPrivilege Privilege for windows side ACLs
-      command: net sam rights grant "{{ workgroup|upper }}\{{ item }}" SeDiskOperatorPrivilege
-      with_items: "{{ share_admins }}"
-      when: 
-        - enable_windows_acl | bool
-        - domain_member | bool
-    - import_role:
-        name: samba-backend
-      tags:
-        - backend
-    # - import_role:
-    #     name: samba-shares
-    #   tags:
-    #     - shares
+        name: smb
 
   post_tasks:
     - name: set samba setup 'Complete'

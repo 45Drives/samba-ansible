@@ -1,14 +1,14 @@
 ---
 # Setup 45drives Package Repository
-- include: install/repository.yml
+- include: repository.yml
   when:
     - not offline_install
 
-- include: install/redhat.yml
+- include: redhat.yml
   when:
     - ansible_facts['os_family'] == 'RedHat'
 
-- include: install/ubuntu.yml
+- include: ubuntu.yml
   when: 
     - ansible_facts['distribution'] == 'Ubuntu'
 

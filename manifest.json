@@ -1,5 +1,5 @@
 {
-    "__version": "45D-R2",
+    "__version": "45D-R1",
     "name": "samba-ansible",
     "title": "Samba-ansible",
     "prerelease": true,

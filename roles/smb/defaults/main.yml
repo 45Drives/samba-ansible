@@ -23,7 +23,7 @@ join_method: 'sssd'
 join_auth: 'kerberos'
 realm: '45lab.local'
 workgroup: '45lab'
-# Server Name ; This varible is ignored when not a cluster member and NetBIOS name is set to the hostname of the server
+# netbios_name ; This varible is ignored when not a cluster member and NetBIOS name is set to the hostname of the server
 netbios_name: 'CTDBCLUSTER'
 server_string: "Samba %v"
 

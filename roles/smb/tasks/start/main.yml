@@ -6,3 +6,27 @@
 - name: start clustered samba server
   include: start_clustered_samba.yml
   when: cluster_member
+
+- name: import smb.conf into net conf
+  block:
+    - name: config_samba | write temp smb.conf
+      template:
+        src: etc/samba/smb.conf.j2
+        dest: /etc/samba/smb.conf.tmp
+        owner: "root"
+        group: "root"
+        mode: 0644
+
+    - name: remove include = registry from smb.conf file
+      lineinfile:
+        path: /etc/samba/smb.conf.tmp
+        regexp: '\sinclude = registry'
+        state: absent
+    
+    - name: import smb.conf.tmp into registry
+      command: "/usr/bin/net conf import /etc/samba/smb.conf.tmp"
+
+    - name: remove temp smb.conf
+      file:
+        path: /etc/samba/smb.conf.tmp
+        state: absent

@@ -22,22 +22,12 @@
         "urgency": "medium"
     },
     "dependencies": {
-        "deb": {
-            "bionic": [
-                "ansible"
-            ],
-            "focal": [
-                "ansible"
-            ]
-        },
-        "el": {
-            "el7": [
-                "ansible"
-            ],
-            "el8": [
-                "ansible"
-            ]
-        }
+        "deb": [
+            "ansible"
+        ],
+        "el": [
+            "ansible"
+        ]
     },
     "releases": [
         {

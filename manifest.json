@@ -1,0 +1,63 @@
+{
+    "__version": "45D-R2",
+    "name": "samba-ansible",
+    "title": "Samba-ansible",
+    "prerelease": true,
+    "version": "1.0.0",
+    "buildVersion": "1",
+    "author": "Brett Kelly <bkelly@45drives.com>",
+    "url": "https://github.com/45Drives/samba-ansible",
+    "category": "utils",
+    "priority": "optional",
+    "licence": "GPL-3.0+",
+    "architecture": {
+        "deb": "all",
+        "el": "noarch"
+    },
+    "description": {
+        "long": "Deploy samba,ctdb and domain joins w. anisble ",
+        "short": "Deploy samba,ctdb and domain joins w. anisble "
+    },
+    "defaults": {
+        "urgency": "medium"
+    },
+    "dependencies": {
+        "deb": {
+            "bionic": [
+                "ansible"
+            ],
+            "focal": [
+                "ansible"
+            ]
+        },
+        "el": {
+            "el7": [
+                "ansible"
+            ],
+            "el8": [
+                "ansible"
+            ]
+        }
+    },
+    "releases": [
+        {
+            "image": "ubuntu-focal-builder",
+            "codeName": "focal",
+            "type": "deb"
+        },
+        {
+            "image": "rocky-el8-builder",
+            "codeName": "el8",
+            "type": "el"
+        }
+    ],
+    "changelog": {
+        "urgency": "medium",
+        "version": "1.0.0",
+        "buildVersion": "1",
+        "ignore": [],
+        "date": null,
+        "packager": "Brett Kelly <bkelly@45drives.com>",
+        "changes": []
+    }
+}

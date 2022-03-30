@@ -21,8 +21,8 @@ join_auth: 'kerberos'
 join_user: ''
 join_password: ''
 # Domain Name
-realm: '45lab.local'
-workgroup: '45lab'
+realm: ''
+workgroup: ''
 # Server Name
 # This varible is ignored when not a cluster member and NetBIOS name is set to the hostname of the server
 netbios_name: 'CTDBCLUSTER'
@@ -35,11 +35,10 @@ fully_qualified_names: false
 enable_windows_acl: true
 share_admins:
   - "Domain Admins"
-  - "bk"
 
 # ctdb 
 ctdb_public_addresses:
-  - vip_address: '192.168.189.10'
+  - vip_address: '192.168.200.89'
     vip_interface: 'enp59s0f0'
     subnet_mask: '16'
 

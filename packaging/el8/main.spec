@@ -23,7 +23,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 make DESTDIR=%{buildroot} install
 
 %files
-/usr/share/cockpit/package-name/*
+/usr/share/samba-ansible/*
 
 %changelog
 * Wed Mar 30 2022 Brett Kelly <bkelly@45drives.com> 1.0.0-1

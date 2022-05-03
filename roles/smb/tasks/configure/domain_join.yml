@@ -47,6 +47,7 @@
         owner: "root"
         group: "root"
         mode: 0755
+      when: cluster_member | bool
 
     - name: Join domain via {{ join_method }} w. Kerberos Auth 
       command: /usr/sbin/realm join {{ realm }} --membership-software=samba

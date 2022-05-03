@@ -1,8 +1,10 @@
 [active-directory]
 default-client = {{ join_method }}
 
+{% if cluster_member %}
 [paths]
 net = /usr/bin/net-realmd-wrapper
+{% endif %}
 
 [{{ realm|lower }}]
 {% if fully_qualified_names %}

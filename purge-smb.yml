@@ -25,7 +25,12 @@
 
   vars:
     redhat_samba_packages:
-      - samba*
+      - samba
+      - samba-common
+      - samba-common-libs
+      - samba-common-tools
+      - samba-libs
+      - samba-vfs-modules
       - ctdb*
       - pam_krb5
       - libsmbclient

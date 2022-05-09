@@ -1,0 +1,4 @@
+---
+- name: configure for zfs backend fs
+  debug:
+    msg: "placeholder for zfs filesystems"

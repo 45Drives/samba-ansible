@@ -1,11 +1,11 @@
 ---
-- name: confirm whether user really meant to purge the cluster
+- name: confirm whether user really meant to purge the samba configuration
   hosts: localhost
   gather_facts: false
 
   vars_prompt:
     - name: ireallymeanit
-      prompt: Are you sure you want to purge the cluster?
+      prompt: Are you sure you want to purge the samba configuration ?
       default: 'no'
       private: no
 

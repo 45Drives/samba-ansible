@@ -31,9 +31,9 @@ Options are:
 
 
 ### ID Mapping
-* when auto_idmapping is true and join_method is sssd, idmap backend is set to 'sss' and 'ldap_idmapping' is set to false is /etc/sssd/sssd.conf
+* when auto_idmapping is true and join_method is sssd, idmap backend is set to 'sss' and 'ldap_idmapping' is set to true is /etc/sssd/sssd.conf
 * when auto_idmapping is true and join_method is winbind, idmap backend is set to 'rid'
-* when auto_idmapping is false and join_method is sssd, idmap backend is set to 'sss' and 'ldap_idmapping' is set to true is /etc/sssd/sssd.conf
+* when auto_idmapping is false and join_method is sssd, idmap backend is set to 'sss' and 'ldap_idmapping' is set to false is /etc/sssd/sssd.conf
 * when auto_idmapping is false and join_method is winbind, idmap backend is set to 'ad', and idmap mode is set to rfc2307
 ```
 auto_id_mapping: true

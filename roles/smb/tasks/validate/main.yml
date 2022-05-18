@@ -59,12 +59,34 @@
   with_items:
     - "{{ ctdb_public_addresses }}"
 
-# Add task to ensure backend_filesystem is correct
 - name: fail if backend_filesystem is misconfigured 
   fail:
     msg: "backend_filesystem must be either 'cephfs' or 'zfs' or 'generic'"
   when: 
     - backend_filesystem not in ['cephfs','zfs','generic']
+
+- name: validate firewall options
+  block:
+    - name: make sure firewalld is installed
+      command: /usr/bin/command -v firewall-cmd
+      failed_when: false
+      register: firewall_package
+    
+    - name: fail if manage_firewall is true, but firewalld is not present
+      fail:
+        msg: "Firewalld is not installed. Either install firewalld or set manage_firewall to false"
+      when: firewall_package.rc != 0
+
+    - name: get firewalld state
+      command: /usr/bin/firewall-cmd --state
+      failed_when: false
+      register: firewall_state
+
+    - name: fail if manage_firewall is true, but firewalld is not running
+      fail:
+        msg: "firewalld is not running, cant manage firewall. Either start firewalld or set manage_firewall to false"
+      when: firewall_state.rc != 0
+  when: manage_firewall | bool
 
 # add task that fails if backend_filesystem is cephfs but admin keyring is not present
 

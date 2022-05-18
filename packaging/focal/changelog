@@ -1,3 +1,10 @@
+samba-ansible (1.0.0-2focal) focal; urgency=medium
+
+  * added firewalld validation check
+  * updated anisble.cfg
+
+ -- Brett Kelly <bkelly@45drives.com>  Wed, 18 May 2022 07:07:36 -0300
+
 samba-ansible (1.0.0-1focal) focal; urgency=medium
 
   * initial pre-release build

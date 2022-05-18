@@ -26,5 +26,8 @@ make DESTDIR=%{buildroot} install
 /usr/share/samba-ansible/*
 
 %changelog
+* Wed May 18 2022 Brett Kelly <bkelly@45drives.com> 1.0.0-2
+- added firewalld validation check
+- updated anisble.cfg
 * Wed Mar 30 2022 Brett Kelly <bkelly@45drives.com> 1.0.0-1
 - initial pre-release build

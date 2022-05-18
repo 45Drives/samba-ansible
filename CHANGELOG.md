@@ -1,3 +1,4 @@
-## Samba-ansible 1.0.0-1
+## Samba-ansible 1.0.0-2
 
-* initial pre-release build
+* added firewalld validation check
+* updated anisble.cfg

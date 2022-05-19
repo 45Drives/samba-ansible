@@ -1,3 +1,9 @@
+samba-ansible (1.1.0-2focal) focal; urgency=medium
+
+  * set winbind as default join method
+
+ -- Brett Kelly <bkelly@45drives.com>  Thu, 19 May 2022 13:09:34 -0300
+
 samba-ansible (1.1.0-1focal) focal; urgency=medium
 
   * v1.1.0 release

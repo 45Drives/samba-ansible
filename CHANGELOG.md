@@ -1,3 +1,3 @@
-## Samba-ansible 1.1.0-1
+## Samba-ansible 1.1.0-2
 
-* v1.1.0 release
+* set winbind as default join method

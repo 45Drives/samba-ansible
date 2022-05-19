@@ -26,6 +26,8 @@ make DESTDIR=%{buildroot} install
 /usr/share/samba-ansible/*
 
 %changelog
+* Thu May 19 2022 Brett Kelly <bkelly@45drives.com> 1.1.0-2
+- set winbind as default join method
 * Thu May 19 2022 Brett Kelly <bkelly@45drives.com> 1.1.0-1
 - v1.1.0 release
 * Thu May 19 2022 Brett Kelly <bkelly@45drives.com> 1.0.0-3

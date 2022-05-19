@@ -14,7 +14,7 @@ cluster_member: false
 
 # Join Method
 # join_method: sssd|winbind
-join_method: 'sssd'
+join_method: 'winbind'
 # Join Authorization
 # join_auth: kerberos|password
 join_auth: 'kerberos'

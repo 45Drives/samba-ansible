@@ -26,6 +26,9 @@ make DESTDIR=%{buildroot} install
 /usr/share/samba-ansible/*
 
 %changelog
+* Thu May 19 2022 Brett Kelly <bkelly@45drives.com> 1.0.0-3
+- fixed syntax error when cleaning sssd cache
+- added log level and server string
 * Wed May 18 2022 Brett Kelly <bkelly@45drives.com> 1.0.0-2
 - added firewalld validation check
 - updated anisble.cfg

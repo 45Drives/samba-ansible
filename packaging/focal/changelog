@@ -1,3 +1,10 @@
+samba-ansible (1.0.0-3focal) focal; urgency=medium
+
+  * fixed syntax error when cleaning sssd cache
+  * added log level and server string
+
+ -- Brett Kelly <bkelly@45drives.com>  Thu, 19 May 2022 07:37:17 -0300
+
 samba-ansible (1.0.0-2focal) focal; urgency=medium
 
   * added firewalld validation check

@@ -10,7 +10,7 @@ manage_firewall: true
 
 # Roles
 domain_member: true
-cluster_member: true
+cluster_member: false
 
 # Join Method
 # join_method: sssd|winbind
@@ -42,6 +42,6 @@ ctdb_public_addresses:
     vip_interface: 'enp59s0f0'
     subnet_mask: '16'
 
-# backend_filesystem: cephfs|generic
-backend_filesystem: cephfs
+# backend_filesystem: cephfs|zfs|generic
+backend_filesystem: zfs
 shared_storage_mountpoint: /mnt/cephfs

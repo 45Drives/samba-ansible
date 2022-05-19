@@ -16,7 +16,6 @@
 {% if cluster_member %}
   clustering = yes
 
-  server string = {{ server_string | default("Samba %v") }}
   netbios name = {{ netbios_name }}
 {% endif %}
 
@@ -58,6 +57,7 @@
   store dos attributes = yes
   vfs objects = acl_xattr
 {% endif %}
-
+  server string = {{ server_description | default("45Drives Samba Server") }}
+  log level = {{ log_level }}
   include = registry
 

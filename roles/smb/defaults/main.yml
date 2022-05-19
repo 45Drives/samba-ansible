@@ -17,6 +17,8 @@ samba_firewall_zone: public
 ctdb_firewall_zone: public
 
 # Samba Options
+server_description: "45Drives Samba Server"
+log_level: 0
 domain_member: false
 cluster_member: false
 join_method: 'sssd'
@@ -25,7 +27,6 @@ realm: '45lab.local'
 workgroup: '45lab'
 # netbios_name ; This varible is ignored when not a cluster member and NetBIOS name is set to the hostname of the server
 netbios_name: 'CTDBCLUSTER'
-server_string: "Samba %v"
 
 # idmap backends
 #default tdb2
@@ -56,7 +57,7 @@ ctdb_tunables:
   - key: 'TakeoverTimeout'
     value: '5'
 
-# backend_filesystem: cephfs|generic
+# backend_filesystem: cephfs|zfs|generic
 backend_filesystem: cephfs
 shared_storage_mountpoint: /mnt/cephfs
 cephfs_samba_keyring: 

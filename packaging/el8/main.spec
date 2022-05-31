@@ -26,6 +26,8 @@ make DESTDIR=%{buildroot} install
 /usr/share/samba-ansible/*
 
 %changelog
+* Tue May 31 2022 Brett Kelly <bkelly@45drives.com> 1.1.1-1
+- create cephx keyring when using cephfs as backend
 * Thu May 19 2022 Brett Kelly <bkelly@45drives.com> 1.1.0-2
 - set winbind as default join method
 * Thu May 19 2022 Brett Kelly <bkelly@45drives.com> 1.1.0-1

@@ -1,3 +1,3 @@
-## Samba-ansible 1.1.0-2
+## Samba-ansible 1.1.1-1
 
-* set winbind as default join method
+* create cephx keyring when using cephfs as backend

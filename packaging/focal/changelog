@@ -1,3 +1,9 @@
+samba-ansible (1.1.1-1focal) focal; urgency=medium
+
+  * create cephx keyring when using cephfs as backend
+
+ -- Brett Kelly <bkelly@45drives.com>  Tue, 31 May 2022 12:50:52 -0300
+
 samba-ansible (1.1.0-2focal) focal; urgency=medium
 
   * set winbind as default join method

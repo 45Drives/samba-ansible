@@ -18,6 +18,7 @@
       until: result is succeeded
       with_items:
         - winbind
+        - realmd
         - oddjob
         - oddjob-mkhomedir
         - krb5-config

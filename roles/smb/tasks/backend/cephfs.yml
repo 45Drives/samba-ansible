@@ -6,20 +6,13 @@
 - name: configure_cephfs_backend | Create directory for samba shares
   shell: /usr/bin/cephfs-shell "mkdir -m 755 -p /fsgw"
   run_once: true
-
-- name: configure_cephfs_backend | Create samba cephx user
-  ceph_key:
-    name: "{{ item.name }}"
-    state: present
-    caps: "{{ item.caps }}"
-    cluster: "ceph"
-    secret: "{{ item.key | default('') }}"
-  with_items: "{{ cephfs_samba_keyring }}"
+  delegate_to: "{{ groups[mon_group_name][0] }}"
 
 - name: configure_cephfs_backend | Get samba secret for cephfs mount
   command: "ceph auth get-key client.samba"
   register: command_output_samba
   changed_when: false
+  delegate_to: "{{ groups[mon_group_name][0] }}"
 
 - name: configure_cephfs_backend | Set samba secret fact
   set_fact:
@@ -29,20 +22,6 @@
   copy:
     content: "{{ cephfs_samba_secret }}"
     dest: /etc/ceph/samba.secret
-    force: yes
-    group: ceph
-    owner: ceph
-    mode: "0600"
-
-- name: configure_cephfs_backend | Get samba keyring for rados locking
-  command: "ceph auth get client.samba"
-  register: samba_keyring
-  changed_when: false
-
-- name: configure_cephfs_backend | Write samba keyring
-  copy:
-    content: "{{ samba_keyring.stdout }}\n"
-    dest: "/etc/ceph/ceph.client.samba.keyring"
     force: yes
     group: ceph
     owner: ceph

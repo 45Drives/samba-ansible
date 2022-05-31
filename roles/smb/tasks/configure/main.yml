@@ -1,6 +1,10 @@
 ---
 - include: firewall.yml
 
+- include: create_ceph_keyring.yml
+  when:
+    - backend_filesystem == "cephfs"
+
 - include: ctdb.yml
   when:
     - cluster_member | bool

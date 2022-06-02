@@ -26,6 +26,8 @@ make DESTDIR=%{buildroot} install
 /usr/share/samba-ansible/*
 
 %changelog
+* Thu Jun 02 2022 Brett Kelly <bkelly@45drives.com> 1.1.1-2
+- fixed syntax in net wrapper script
 * Tue May 31 2022 Brett Kelly <bkelly@45drives.com> 1.1.1-1
 - create cephx keyring when using cephfs as backend
 * Thu May 19 2022 Brett Kelly <bkelly@45drives.com> 1.1.0-2

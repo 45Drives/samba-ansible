@@ -16,9 +16,9 @@ get_realmd_wrapper_style () {
 			if [[ "$BUILD" -lt "$TARGET_BUILD" && "$MAJ" == "$TARGET_VERSION" ]]; then
 					echo 0
 			else
-					echo 1lving: _ldap._tcp.45lab.local
-Jun 02 09:00:59 rockygw1 realmd[20152]:  * Performing LDAP DSE lookup on: 192.168.16.40
-Jun 02 09:00:59 rockygw1 realmd[20152]:  * Successfully disc]; then
+					echo 1
+			fi
+	elif [[ "$OS_TYPE" == "debian" ]]; then
 			# Use dpkg
 			REALM_PKG=$(dpkg-query -W | grep realmd | sed -E 's/realmd\s+(\S+)/\1/g' | sed -E 's/(.*-[0-9]*)([a-z]).*/\1/g')
 			MAJ=$(echo "$REALM_PKG" | cut -d '-' -f 1)

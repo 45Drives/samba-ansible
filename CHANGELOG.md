@@ -1,3 +1,3 @@
-## Samba-ansible 1.1.1-2
+## Samba-ansible 1.1.1-3
 
-* fixed syntax in net wrapper script
+* fixed another syntax error

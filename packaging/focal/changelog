@@ -1,3 +1,9 @@
+samba-ansible (1.1.1-3focal) focal; urgency=medium
+
+  * fixed another syntax error
+
+ -- Brett Kelly <bkelly@45drives.com>  Thu, 02 Jun 2022 07:13:25 -0300
+
 samba-ansible (1.1.1-2focal) focal; urgency=medium
 
   * fixed syntax in net wrapper script

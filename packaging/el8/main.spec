@@ -26,6 +26,8 @@ make DESTDIR=%{buildroot} install
 /usr/share/samba-ansible/*
 
 %changelog
+* Thu Jun 02 2022 Brett Kelly <bkelly@45drives.com> 1.1.1-3
+- fixed another syntax error
 * Thu Jun 02 2022 Brett Kelly <bkelly@45drives.com> 1.1.1-2
 - fixed syntax in net wrapper script
 * Tue May 31 2022 Brett Kelly <bkelly@45drives.com> 1.1.1-1

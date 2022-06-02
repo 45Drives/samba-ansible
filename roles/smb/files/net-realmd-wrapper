@@ -16,9 +16,9 @@ get_realmd_wrapper_style () {
 			if [[ "$BUILD" -lt "$TARGET_BUILD" && "$MAJ" == "$TARGET_VERSION" ]]; then
 					echo 0
 			else
-					echo 1
-			fi
-	elif [[ "$OS_TYPE" == "debian" ]]; then
+					echo 1lving: _ldap._tcp.45lab.local
+Jun 02 09:00:59 rockygw1 realmd[20152]:  * Performing LDAP DSE lookup on: 192.168.16.40
+Jun 02 09:00:59 rockygw1 realmd[20152]:  * Successfully disc]; then
 			# Use dpkg
 			REALM_PKG=$(dpkg-query -W | grep realmd | sed -E 's/realmd\s+(\S+)/\1/g' | sed -E 's/(.*-[0-9]*)([a-z]).*/\1/g')
 			MAJ=$(echo "$REALM_PKG" | cut -d '-' -f 1)
@@ -41,12 +41,12 @@ if [ $USE_UPDATED_WRAPPER -eq 1 ]; then
 	echo "net-realmd-wrapper substitution -> /usr/bin/net $ARGS"
 	BASH_COMMAND=("/usr/bin/net $ARGS")
 	echo "net-realmd-wrapper bash command -> $BASH_COMMAND"
-	bash -c $BASH_COMMAND
+	bash -c "$BASH_COMMAND"
 else
 	echo "net-realmd-wrapper -> Using realmd (version < 0.16.3-25) style substitution (old)"
 	ARGS=$(echo $TMPARGS | sed -E 's/-s[[:space:]]([^ ]+)//g')
 	echo "net-realmd-wrapper substitution -> /usr/bin/net -s /etc/samba/smb.conf.tmp $ARGS"
 	BASH_COMMAND=("/usr/bin/net -s /etc/samba/smb.conf.tmp $ARGS")
 	echo "net-realmd-wrapper bash command -> $BASH_COMMAND"
-	bash -c $BASH_COMMAND
+	bash -c "$BASH_COMMAND"
 fi

@@ -37,7 +37,7 @@ get_realmd_wrapper_style () {
 USE_UPDATED_WRAPPER="$(get_realmd_wrapper_style)"
 if [ $USE_UPDATED_WRAPPER -eq 1 ]; then
 	echo "net-realmd-wrapper -> Using realmd (version >= 0.16.3-25) style substitution (new)"
-	ARGS=$(echo $TMPARGS | sed -E 's/(--configfile|-s)[[:space:]]([^ ]+[[:space:]])(-U[[:space:]][^ ]+).*(-k[[:space:]])?(ads.*$)/\5 --configfile \/etc\/samba\/smb.conf.tmp \3 --use-kerberos=required/g')
+	ARGS=$(echo $TMPARGS | sed -E 's/(--configfile|-s)[[:space:]]([^ ]+[[:space:]])(-U[[:space:]][^ ]+)?.*(-k[[:space:]])?(ads.*$)/\5 --configfile \/etc\/samba\/smb.conf.tmp \3 --use-kerberos=required/g')
 	echo "net-realmd-wrapper substitution -> /usr/bin/net $ARGS"
 	BASH_COMMAND=("/usr/bin/net $ARGS")
 	echo "net-realmd-wrapper bash command -> $BASH_COMMAND"

@@ -23,12 +23,10 @@
     },
     "dependencies": {
         "deb": [
-            "ansible",
-            "krb5-user"
+            "ansible"
         ],
         "el": [
-            "ansible",
-            "krb5-workstation"
+            "ansible"
         ]
     },
     "releases": [

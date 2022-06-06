@@ -1,4 +1,8 @@
 ---
+- name: include dependency tasks
+  include: install/dependencies.yml
+  tags: always
+
 - name: include validate tasks 
   include: validate/main.yml
   tags: always

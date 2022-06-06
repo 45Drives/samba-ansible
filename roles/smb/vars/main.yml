@@ -1,4 +1,10 @@
 ---
+debian_dependencies:
+  - krb5-user
+
+rhel_dependencies:
+  - krb5-workstation
+
 ceph_pkgs:
   - ceph-fuse
   - ceph-common

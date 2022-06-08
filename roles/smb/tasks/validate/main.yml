@@ -68,7 +68,7 @@
 - name: validate firewall options
   block:
     - name: make sure firewalld is installed
-      command: /usr/bin/command -v firewall-cmd
+      shell: command -v firewall-cmd
       failed_when: false
       register: firewall_package
     

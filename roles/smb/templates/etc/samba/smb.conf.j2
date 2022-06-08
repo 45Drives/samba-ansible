@@ -24,17 +24,28 @@
 
   idmap config * : backend = tdb2
   idmap config * : range = {{ tdb2_idmap_range }}
+
 {% if domain_member %}
+{% if auto_id_mapping %}
 {% if 'sssd' == join_method %}
   idmap config {{ workgroup|upper }} : backend = sss
   idmap config {{ workgroup|upper }} : range = {{ domain_idmap_range }}
 {% elif 'winbind' == join_method %}
-{% if auto_id_mapping %}
   idmap config {{ workgroup|upper }} : backend = rid
   idmap config {{ workgroup|upper }} : range = {{ domain_idmap_range }}
+{% endif %}
+{% else %}
+  idmap config {{ workgroup|upper }} : backend = ad
+  idmap config {{ workgroup|upper }} : schema_mode = rfc2307
+  idmap config {{ workgroup|upper }} : unix_nss_info = yes
+{% endif %}
+{% if 'winbind' == join_method %}
 {% if enumerate_ids %}
   winbind enum users = yes
   winbind enum groups = yes
+{% else %}
+  winbind enum users = no
+  winbind enum groups = no
 {% endif %}
 {% if fully_qualified_names %}
   winbind use default domain = no
@@ -43,11 +54,6 @@
 {% endif %}
   winbind refresh tickets = yes
   winbind offline logon = yes
-{% else %}
-  idmap config {{ workgroup|upper }} : backend = ad
-  idmap config {{ workgroup|upper }} : schema_mode = rfc2307
-  idmap config {{ workgroup|upper }} : unix_nss_info = yes
-{% endif %}
 {% endif %}
 {% endif %}
 

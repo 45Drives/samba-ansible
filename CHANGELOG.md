@@ -1,4 +1,4 @@
-## Samba-ansible 1.1.1-4
+## Samba-ansible 1.1.2-2
 
 * removed krb5 packages as dependencies
 * fixed incorrect logic when configuring idmap backend

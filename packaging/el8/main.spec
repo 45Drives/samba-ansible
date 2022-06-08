@@ -26,6 +26,11 @@ make DESTDIR=%{buildroot} install
 /usr/share/samba-ansible/*
 
 %changelog
+* Wed Jun 08 2022 Mark Hooper <mhooper@45drives.com> 1.1.1-4
+- removed krb5 packages as dependencies
+- fixed incorrect logic when configuring idmap backend
+- use shell module in firewalld validate task
+- set executable option as /bin/bash in firewalld validate task
 * Thu Jun 02 2022 Brett Kelly <bkelly@45drives.com> 1.1.1-3
 - fixed another syntax error
 * Thu Jun 02 2022 Brett Kelly <bkelly@45drives.com> 1.1.1-2

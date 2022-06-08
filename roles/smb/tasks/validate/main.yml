@@ -69,6 +69,8 @@
   block:
     - name: make sure firewalld is installed
       shell: command -v firewall-cmd
+      args:
+        executable: /bin/bash
       failed_when: false
       register: firewall_package
     

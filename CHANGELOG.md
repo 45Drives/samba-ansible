@@ -1,3 +1,3 @@
-## Samba-ansible 1.1.2-3
+## Samba-ansible 1.1.2-4
 
-* added a kerberos_init.yml playbook
+* removed kerberos_init.yml playbook

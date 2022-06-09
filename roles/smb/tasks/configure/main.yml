@@ -9,11 +9,6 @@
   when:
     - cluster_member | bool
 
-- include: kerberos_init.yml
-  when:
-    - domain_member | bool
-    - join_auth == "kerberos"
-
 - include: domain_join.yml
   when:
     - domain_member | bool

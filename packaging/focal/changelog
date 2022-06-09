@@ -1,3 +1,9 @@
+samba-ansible (1.1.2-3focal) focal; urgency=medium
+
+  * added a kerberos_init.yml playbook
+
+ -- Mark Hooper <mhooper@45drives.com>  Thu, 09 Jun 2022 11:36:56 -0300
+
 samba-ansible (1.1.2-2focal) focal; urgency=medium
 
   * removed krb5 packages as dependencies

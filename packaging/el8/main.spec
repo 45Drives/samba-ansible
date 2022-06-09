@@ -26,6 +26,8 @@ make DESTDIR=%{buildroot} install
 /usr/share/samba-ansible/*
 
 %changelog
+* Thu Jun 09 2022 Mark Hooper <mhooper@45drives.com> 1.1.2-3
+- added a kerberos_init.yml playbook
 * Wed Jun 08 2022 Mark Hooper <mhooper@45drives.com> 1.1.2-2
 - removed krb5 packages as dependencies
 - fixed incorrect logic when configuring idmap backend

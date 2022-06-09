@@ -1,6 +1,3 @@
-## Samba-ansible 1.1.2-2
+## Samba-ansible 1.1.2-3
 
-* removed krb5 packages as dependencies
-* fixed incorrect logic when configuring idmap backend
-* use shell module in firewalld validate task
-* set executable option as /bin/bash in firewalld validate task
+* added a kerberos_init.yml playbook

@@ -47,13 +47,13 @@
   winbind enum users = no
   winbind enum groups = no
 {% endif %}
+  winbind refresh tickets = yes
+  winbind offline logon = yes
+{% endif %}
 {% if fully_qualified_names %}
   winbind use default domain = no
 {% else %}
   winbind use default domain = yes
-{% endif %}
-  winbind refresh tickets = yes
-  winbind offline logon = yes
 {% endif %}
 {% endif %}
 

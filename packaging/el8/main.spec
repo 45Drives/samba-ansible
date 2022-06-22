@@ -26,6 +26,8 @@ make DESTDIR=%{buildroot} install
 /usr/share/samba-ansible/*
 
 %changelog
+* Wed Jun 22 2022 Mark Hooper <mhooper@45drives.com> 1.1.2-5
+- updated smd.conf.j2
 * Thu Jun 09 2022 Mark Hooper <mhooper@45drives.com> 1.1.2-4
 - removed kerberos_init.yml playbook
 * Thu Jun 09 2022 Mark Hooper <mhooper@45drives.com> 1.1.2-3

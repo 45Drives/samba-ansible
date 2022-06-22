@@ -4,7 +4,7 @@
     "title": "Samba-ansible",
     "prerelease": true,
     "version": "1.1.2",
-    "buildVersion": "4",
+    "buildVersion": "5",
     "author": "Brett Kelly <bkelly@45drives.com>",
     "url": "https://github.com/45Drives/samba-ansible",
     "category": "utils",
@@ -44,7 +44,7 @@
     "changelog": {
         "urgency": "medium",
         "version": "1.1.2",
-        "buildVersion": "4",
+        "buildVersion": "5",
         "ignore": [],
         "date": null,
         "packager": "Brett Kelly <bkelly@45drives.com>",

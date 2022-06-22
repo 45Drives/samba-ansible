@@ -1,3 +1,3 @@
-## Samba-ansible 1.1.2-4
+## Samba-ansible 1.1.2-5
 
-* removed kerberos_init.yml playbook
+* updated smd.conf.j2

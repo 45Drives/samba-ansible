@@ -26,6 +26,8 @@ make DESTDIR=%{buildroot} install
 /usr/share/samba-ansible/*
 
 %changelog
+* Mon Jun 27 2022 Mark Hooper <mhooper@45drives.com> 1.1.2-6
+- updated cephfs_samba_keyring to allow reads for mgr
 * Wed Jun 22 2022 Mark Hooper <mhooper@45drives.com> 1.1.2-5
 - updated smd.conf.j2
 * Thu Jun 09 2022 Mark Hooper <mhooper@45drives.com> 1.1.2-4

@@ -1,3 +1,9 @@
+samba-ansible (1.1.2-6focal) focal; urgency=medium
+
+  * updated cephfs_samba_keyring to allow reads for mgr
+
+ -- Mark Hooper <mhooper@45drives.com>  Mon, 27 Jun 2022 10:53:17 -0300
+
 samba-ansible (1.1.2-5focal) focal; urgency=medium
 
   * updated smd.conf.j2

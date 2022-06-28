@@ -3,16 +3,20 @@
   debug:
     msg: "configured cephfs as backend fs"
 
+- name: print client name
+  debug:
+    msg: "{{ cephfs_samba_keyring[0].name.split('.') | last }}"
+
 - name: configure_cephfs_backend | Create directory for samba shares
-  shell: /usr/bin/cephfs-shell "mkdir -m 755 -p /fsgw"
+  shell: /usr/bin/cephfs-shell "mkdir -m 755 -p /{{ cephfs_samba_keyring[0].name.split('.') | last }}"
   run_once: true
-  delegate_to: "{{ groups[mon_group_name][0] }}"
+  delegate_to: "{{ groups.mons[0] }}"
 
 - name: configure_cephfs_backend | Get samba secret for cephfs mount
-  command: "ceph auth get-key client.samba"
+  command: "ceph auth get-key {{ cephfs_samba_keyring[0].name }}"
   register: command_output_samba
   changed_when: false
-  delegate_to: "{{ groups[mon_group_name][0] }}"
+  delegate_to: "{{ groups.mons[0] }}"
 
 - name: configure_cephfs_backend | Set samba secret fact
   set_fact:
@@ -21,7 +25,7 @@
 - name: configure_cephfs_backend | write ceph samba client secret
   copy:
     content: "{{ cephfs_samba_secret }}"
-    dest: /etc/ceph/samba.secret
+    dest: /etc/ceph/{{ cephfs_samba_keyring[0].name.split('.') | last }}.secret
     force: yes
     group: ceph
     owner: ceph
@@ -39,7 +43,7 @@
 - name: mount_cephfs | mount share
   mount:
     name: "{{ shared_storage_mountpoint }}"
-    src: ":/fsgw"
+    src: ":/{{ cephfs_samba_keyring[0].name.split('.') | last }}"
     fstype: "ceph"
-    opts: "name=samba,secretfile=/etc/ceph/samba.secret,_netdev,relatime"
+    opts: "name={{ cephfs_samba_keyring[0].name.split('.') | last }},secretfile=/etc/ceph/{{ cephfs_samba_keyring[0].name.split('.') | last }}.secret,_netdev,relatime"
     state: mounted

@@ -4,7 +4,7 @@
     src: /etc/ceph/ceph.conf
     dest: fetch/conf/
     flat: yes
-  delegate_to: "{{ groups[mon_group_name][0] }}"
+  delegate_to: "{{ groups.mons[0] }}"
 
 - name: configure_cephfs_backend | Copy ceph.conf to smb gateways
   copy:
@@ -19,18 +19,18 @@
     cluster: "ceph"
     secret: "{{ item.key | default('') }}"
   with_items: "{{ cephfs_samba_keyring }}"
-  delegate_to: "{{ groups[mon_group_name][0] }}"
+  delegate_to: "{{ groups.mons[0] }}"
 
 - name: configure_cephfs_backend | Get samba keyring for rados locking
-  command: "ceph auth get client.samba"
+  command: "ceph auth get {{ cephfs_samba_keyring[0].name }}"
   register: samba_keyring
   changed_when: false
-  delegate_to: "{{ groups[mon_group_name][0] }}"
+  delegate_to: "{{ groups.mons[0] }}"
 
 - name: configure_cephfs_backend | Write samba keyring
   copy:
     content: "{{ samba_keyring.stdout }}\n"
-    dest: "/etc/ceph/ceph.client.samba.keyring"
+    dest: "/etc/ceph/ceph.{{ cephfs_samba_keyring[0].name }}.keyring"
     force: yes
     group: ceph
     owner: ceph

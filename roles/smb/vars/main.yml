@@ -4,6 +4,7 @@ debian_dependencies:
 
 rhel_dependencies:
   - krb5-workstation
+  - epel-release
 
 ceph_pkgs:
   - ceph-fuse

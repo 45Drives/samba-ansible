@@ -26,6 +26,11 @@ make DESTDIR=%{buildroot} install
 /usr/share/samba-ansible/*
 
 %changelog
+* Wed Jul 06 2022 Mark Hooper <mhooper@45drives.com> 1.1.3-1
+- updated smd.conf.j2 template to add 'winbind use default domain' when joining with
+  sssd
+- cleared prerelease flag
+- released to 45drives stable repo
 * Mon Jun 27 2022 Mark Hooper <mhooper@45drives.com> 1.1.2-6
 - updated cephfs_samba_keyring to allow reads for mgr
 * Wed Jun 22 2022 Mark Hooper <mhooper@45drives.com> 1.1.2-5

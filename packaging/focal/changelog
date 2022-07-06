@@ -1,3 +1,12 @@
+samba-ansible (1.1.3-1focal) focal; urgency=medium
+
+  * updated smd.conf.j2 template to add 'winbind use default domain' when joining
+    with sssd
+  * cleared prerelease flag
+  * released to 45drives stable repo
+
+ -- Mark Hooper <mhooper@45drives.com>  Wed, 06 Jul 2022 06:30:00 -0300
+
 samba-ansible (1.1.2-6focal) focal; urgency=medium
 
   * updated cephfs_samba_keyring to allow reads for mgr

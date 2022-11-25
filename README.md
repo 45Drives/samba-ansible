@@ -3,7 +3,6 @@
 role and playbooks to configure samba file server
 Domain joins are supported
 Clustered Samba via CTDB is supported
-Share creation is not currently supported
 
 ## Depandancies
 redhat

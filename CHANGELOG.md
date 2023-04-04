@@ -1,5 +1,3 @@
-## Samba-ansible 1.1.3-1
+## Samba-ansible 1.1.4-1
 
-* updated smd.conf.j2 template to add 'winbind use default domain' when joining with sssd
-* cleared prerelease flag
-* released to 45drives stable repo
+* updated smb.conf.j2 tmeplate to add 'disable spoolss = yes'

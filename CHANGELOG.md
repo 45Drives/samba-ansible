@@ -1,6 +1,5 @@
-## Samba-ansible 1.1.2-2
+## Samba-ansible 1.1.3-1
 
-* removed krb5 packages as dependencies
-* fixed incorrect logic when configuring idmap backend
-* use shell module in firewalld validate task
-* set executable option as /bin/bash in firewalld validate task
+* updated smd.conf.j2 template to add 'winbind use default domain' when joining with sssd
+* cleared prerelease flag
+* released to 45drives stable repo

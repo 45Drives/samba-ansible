@@ -61,4 +61,4 @@ ctdb_tunables:
 backend_filesystem: cephfs
 shared_storage_mountpoint: /mnt/cephfs
 cephfs_samba_keyring: 
-  - { name: client.samba, caps: { mds: "allow r path=/, allow rwps path=/fsgw", mon: "allow r", osd: "allow *" }, mode: "0600" }
+  - { name: client.samba, caps: { mds: "allow r path=/, allow rwps path=/fsgw", mgr: "allow r", mon: "allow r", osd: "allow *" }, mode: "0600" }

@@ -26,6 +26,8 @@ make DESTDIR=%{buildroot} install
 /usr/share/samba-ansible/*
 
 %changelog
+* Tue Apr 04 2023 Brett Kelly <bkelly@45drives.com> 1.1.4-2
+- updated smb.conf.j2 tmeplate to add 'disable spoolss = yes'
 * Tue Apr 04 2023 Brett Kelly <bkelly@45drives.com> 1.1.4-1
 - updated smb.conf.j2 tmeplate to add 'disable spoolss = yes'
 * Wed Jul 06 2022 Mark Hooper <mhooper@45drives.com> 1.1.3-1

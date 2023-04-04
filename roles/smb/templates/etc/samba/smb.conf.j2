@@ -63,7 +63,7 @@
   store dos attributes = yes
   vfs objects = acl_xattr
 {% endif %}
-  disable spoolss = yes # Dont change, samba >=4.15 will fail to start is not disabled 
+  disable spoolss = yes 
   server string = {{ server_description | default("45Drives Samba Server") }}
   log level = {{ log_level }}
   include = registry

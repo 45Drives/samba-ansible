@@ -4,7 +4,7 @@ role and playbooks to configure samba file server
 Domain joins are supported
 Clustered Samba via CTDB is supported
 
-## Depandancies
+## Dependencies
 redhat
 * krb5-workstation
 

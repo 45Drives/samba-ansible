@@ -1,3 +1,3 @@
-## Samba-ansible 1.1.4-2
+## Samba-ansible 1.1.5-1
 
-* updated smb.conf.j2 tmeplate to add 'disable spoolss = yes'
+* Flush winbind cache after initial domain join, fixes issue with incorrect idmapping in non clustered deployments

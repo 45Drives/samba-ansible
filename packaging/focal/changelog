@@ -1,3 +1,10 @@
+samba-ansible (1.1.5-1focal) focal; urgency=medium
+
+  * Flush winbind cache after initial domain join, fixes issue with incorrect idmapping
+    in non clustered deployments
+
+ -- Brett Kelly <bkelly@45drives.com>  Fri, 27 Oct 2023 18:31:56 -0300
+
 samba-ansible (1.1.4-2focal) focal; urgency=medium
 
   * updated smb.conf.j2 tmeplate to add 'disable spoolss = yes'

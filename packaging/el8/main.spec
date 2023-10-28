@@ -26,6 +26,9 @@ make DESTDIR=%{buildroot} install
 /usr/share/samba-ansible/*
 
 %changelog
+* Fri Oct 27 2023 Brett Kelly <bkelly@45drives.com> 1.1.5-1
+- Flush winbind cache after initial domain join, fixes issue with incorrect idmapping
+  in non clustered deployments
 * Tue Apr 04 2023 Brett Kelly <bkelly@45drives.com> 1.1.4-2
 - updated smb.conf.j2 tmeplate to add 'disable spoolss = yes'
 * Tue Apr 04 2023 Brett Kelly <bkelly@45drives.com> 1.1.4-1

@@ -83,6 +83,29 @@
       when:
         - ansible_facts['os_family'] == 'Debian'
 
+    - name: Flush winbind cache
+      when: 
+        - join_method == 'winbind'
+      block:
+        - name: stop winbind
+          service:
+            name: winbind
+            state: stopped
+        
+        - name: backup winbind cache
+          block:
+            - name: create backup dir
+              file:
+                path: /var/lib/samba/old 
+                state: directory
+                mode: '0755'
+            
+            - name: move *tdb files into backup dir
+              shell: "mv /var/lib/samba/*.tdb /var/lib/samba/old/."
+
+        - name: flush winbind cache
+          command: "net cache flush"
+
     - name: Flush sssd cache
       block: 
         - name: stop sssd

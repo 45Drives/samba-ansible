@@ -8,7 +8,7 @@
     "stable": true,
     "author": "Brett Kelly <bkelly@45drives.com>",
     "git_url": "https://github.com/45Drives/samba-ansible",
-    "licence": "GPL-3.0+",
+    "license": "GPL-3.0+",
     "architecture": {
         "deb": "all",
         "el": "noarch"

@@ -10,8 +10,8 @@
     "git_url": "https://github.com/45Drives/samba-ansible",
     "license": "GPL-3.0+",
     "architecture": {
-        "deb": "all",
-        "el": "noarch"
+        "ubuntu": "all",
+        "rocky": "noarch"
     },
     "defaults": {
         "urgency": "medium"

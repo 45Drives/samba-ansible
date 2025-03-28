@@ -1,9 +1,9 @@
 {
     "schema_version": "45D_AP_V2.0",
-    "name": "samba-ansible",
-    "title": "Samba-ansible",
+    "name": "samba-ansible-cephadm",
+    "title": "Samba-ansible-cephadm",
     "description": "Deploy samba,ctdb and domain joins w. anisble ",
-    "version": "1.1.5",
+    "version": "1.0.0",
     "build_number": "1",
     "stable": true,
     "author": "Brett Kelly <bkelly@45drives.com>",
@@ -26,16 +26,6 @@
     },
     "builds": [
         {
-            "group": "ubuntu",
-            "os_name": "ubuntu-focal",
-            "image": "ci.cr.45d.io/ci/simple/ubuntu-focal:1"
-        },
-        {
-            "group": "ubuntu",
-            "os_name": "ubuntu-jammy",
-            "image": "ci.cr.45d.io/ci/simple/ubuntu-jammy:1"
-        },
-        {
             "group": "rocky",
             "os_name": "rocky-el8",
             "image": "ci.cr.45d.io/ci/simple/rocky-el8:1"
@@ -47,7 +37,6 @@
         }
     ],
     "repos": [
-        "community",
         "enterprise"
     ],
     "changelog": {

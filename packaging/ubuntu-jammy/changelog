@@ -1,6 +1,2 @@
-samba-ansible (1.1.5-1focal) focal; urgency=medium
-
-  * Flush winbind cache after initial domain join, fixes issue with incorrect idmapping
-    in non clustered deployments
-
- -- Brett Kelly <bkelly@45drives.com>  Fri, 27 Oct 2023 18:31:56 -0300
+# Mon Mar 31 2025 Matthew Hutchinson <mhutchinson@45drives.com> 1.0.0
+Modified current samba-ansible playbooks to work with cephadm deployments

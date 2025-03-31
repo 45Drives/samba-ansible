@@ -26,51 +26,5 @@ make DESTDIR=%{buildroot} install
 /usr/share/samba-ansible/*
 
 %changelog
-* Fri Oct 27 2023 Brett Kelly <bkelly@45drives.com> 1.1.5-1
-- Flush winbind cache after initial domain join, fixes issue with incorrect idmapping
-  in non clustered deployments
-* Tue Apr 04 2023 Brett Kelly <bkelly@45drives.com> 1.1.4-2
-- updated smb.conf.j2 tmeplate to add 'disable spoolss = yes'
-* Tue Apr 04 2023 Brett Kelly <bkelly@45drives.com> 1.1.4-1
-- updated smb.conf.j2 tmeplate to add 'disable spoolss = yes'
-* Wed Jul 06 2022 Mark Hooper <mhooper@45drives.com> 1.1.3-1
-- updated smd.conf.j2 template to add 'winbind use default domain' when joining with
-  sssd
-- cleared prerelease flag
-- released to 45drives stable repo
-* Mon Jun 27 2022 Mark Hooper <mhooper@45drives.com> 1.1.2-6
-- updated cephfs_samba_keyring to allow reads for mgr
-* Wed Jun 22 2022 Mark Hooper <mhooper@45drives.com> 1.1.2-5
-- updated smd.conf.j2
-* Thu Jun 09 2022 Mark Hooper <mhooper@45drives.com> 1.1.2-4
-- removed kerberos_init.yml playbook
-* Thu Jun 09 2022 Mark Hooper <mhooper@45drives.com> 1.1.2-3
-- added a kerberos_init.yml playbook
-* Wed Jun 08 2022 Mark Hooper <mhooper@45drives.com> 1.1.2-2
-- removed krb5 packages as dependencies
-- fixed incorrect logic when configuring idmap backend
-- use shell module in firewalld validate task
-- set executable option as /bin/bash in firewalld validate task
-* Wed Jun 08 2022 Mark Hooper <mhooper@45drives.com> 1.1.1-4
-- removed krb5 packages as dependencies
-- fixed incorrect logic when configuring idmap backend
-- use shell module in firewalld validate task
-- set executable option as /bin/bash in firewalld validate task
-* Thu Jun 02 2022 Brett Kelly <bkelly@45drives.com> 1.1.1-3
-- fixed another syntax error
-* Thu Jun 02 2022 Brett Kelly <bkelly@45drives.com> 1.1.1-2
-- fixed syntax in net wrapper script
-* Tue May 31 2022 Brett Kelly <bkelly@45drives.com> 1.1.1-1
-- create cephx keyring when using cephfs as backend
-* Thu May 19 2022 Brett Kelly <bkelly@45drives.com> 1.1.0-2
-- set winbind as default join method
-* Thu May 19 2022 Brett Kelly <bkelly@45drives.com> 1.1.0-1
-- v1.1.0 release
-* Thu May 19 2022 Brett Kelly <bkelly@45drives.com> 1.0.0-3
-- fixed syntax error when cleaning sssd cache
-- added log level and server string
-* Wed May 18 2022 Brett Kelly <bkelly@45drives.com> 1.0.0-2
-- added firewalld validation check
-- updated anisble.cfg
-* Wed Mar 30 2022 Brett Kelly <bkelly@45drives.com> 1.0.0-1
-- initial pre-release build
+# Mon Mar 31 2025 Matthew Hutchinson <mhutchinson@45drives.com> 1.0.0
+Modified current samba-ansible playbooks to work with cephadm deployments

@@ -1,3 +1,3 @@
-## Samba-ansible 1.1.5-1
+## Samba-ansible-cephadm 1.0.0-2
 
-* Flush winbind cache after initial domain join, fixes issue with incorrect idmapping in non clustered deployments
+* updated krb5 conf template

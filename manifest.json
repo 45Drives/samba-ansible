@@ -4,7 +4,7 @@
     "title": "Samba-ansible-cephadm",
     "description": "Deploy samba,ctdb and domain joins w. anisble ",
     "version": "1.0.0",
-    "build_number": "1",
+    "build_number": "2",
     "stable": true,
     "author": "Brett Kelly <bkelly@45drives.com>",
     "git_url": "https://github.com/45Drives/samba-ansible",
@@ -14,7 +14,7 @@
         "rocky": "noarch"
     },
     "defaults": {
-        "urgency": "medium"
+        "change_urgency": "medium"
     },
     "dependencies": {
         "ubuntu_common": [
@@ -42,8 +42,7 @@
     "changelog": {
         "urgency": "medium",
         "version": "1.0.0",
-        "buildVersion": "1",
-        "ignore": [],
+        "build_number": "2",
         "date": null,
         "packager": "Brett Kelly <bkelly@45drives.com>",
         "changes": []

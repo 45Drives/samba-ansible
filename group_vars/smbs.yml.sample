@@ -12,6 +12,12 @@ manage_firewall: true
 domain_member: true
 cluster_member: false
 
+#Define the Ceph release
+ceph_stable_release: ''
+
+#Set group name for ceph mons to be used in hosts file.
+mon_group_name: ''
+
 # Join Method
 # join_method: sssd|winbind
 join_method: 'winbind'

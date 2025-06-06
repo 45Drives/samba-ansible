@@ -1,3 +1,3 @@
-## Samba-ansible-cephadm 1.0.0-2
+## Samba-ansible-cephadm 1.0.1-1
 
-* updated krb5 conf template
+* Modified group_vars file to allow for selecting Ceph repo to be used.

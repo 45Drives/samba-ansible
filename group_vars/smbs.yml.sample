@@ -9,8 +9,11 @@ upgrade_samba_packages: true
 manage_firewall: true
 
 # Roles
-domain_member: true
+domain_member: false
 cluster_member: true
+
+#Set the Ceph version the cluster is using
+ceph_stable_release: 18.2.2
 
 # Join Method
 # join_method: sssd|winbind
@@ -38,9 +41,9 @@ share_admins:
 
 # ctdb 
 ctdb_public_addresses:
-  - vip_address: '192.168.X.X'
-    vip_interface: 'public-bond'
-    subnet_mask: '24'
+  - vip_address: '192.168.97.26'
+    vip_interface: 'ens18'
+    subnet_mask: '16'
 
 # backend_filesystem: cephfs|zfs|generic
 backend_filesystem: cephfs

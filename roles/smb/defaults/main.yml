@@ -6,6 +6,7 @@ offline_install: false
 ceph_stable_key: https://download.ceph.com/keys/release.asc
 ceph_mirror: http://download.ceph.com
 ceph_stable_repo: "{{ ceph_mirror }}/debian-{{ ceph_stable_release }}"
+ceph_stable_release: 'octopus'
 
 # Update samba packages if already installed
 upgrade_samba_packages: true

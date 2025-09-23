@@ -1,3 +1,9 @@
+samba-ansible (1.1.7-1jammy) jammy; urgency=medium
+
+  * Added task for ensuring /etc/krb5.conf.d/ exists in response to NCR 360761.
+
+ -- Brett Kelly <bkelly@45drives.com>  Tue, 23 Sep 2025 13:59:59 -0300
+
 samba-ansible (1.1.6-1jammy) jammy; urgency=medium
 
   * Modified variables for the ceph stable repo and the mon group name so they're

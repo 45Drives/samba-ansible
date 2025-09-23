@@ -1,3 +1,3 @@
-## Samba-ansible 1.1.6-1
+## Samba-ansible 1.1.7-1
 
-* Modified variables for the ceph stable repo and the mon group name so they're now set directly in the group_vars file. Altered the task for creating the samba.client user to fix issue on Rocky9/Ubuntu22.
+* Added task for ensuring /etc/krb5.conf.d/ exists in response to NCR 360761.

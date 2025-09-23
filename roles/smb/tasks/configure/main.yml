@@ -1,4 +1,12 @@
 ---
+- name: Ensure /etc/krb5.conf.d/ directory exists
+  file:
+    path: /etc/krb5.conf.d/
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
 - include: firewall.yml
 
 - include: create_ceph_keyring.yml

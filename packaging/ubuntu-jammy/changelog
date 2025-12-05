@@ -1,3 +1,10 @@
+samba-ansible (1.1.8-1jammy) jammy; urgency=medium
+
+  * Fixed issue in purge playbook relating to wrong var and added var to smbs.yml
+    for cephfs_metadata pool names.
+
+ -- Brett Kelly <bkelly@45drives.com>  Fri, 05 Dec 2025 05:49:22 -0400
+
 samba-ansible (1.1.7-1jammy) jammy; urgency=medium
 
   * Added task for ensuring /etc/krb5.conf.d/ exists in response to NCR 360761.

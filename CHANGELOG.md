@@ -1,3 +1,3 @@
-## Samba-ansible 1.1.7-1
+## Samba-ansible 1.1.8-1
 
-* Added task for ensuring /etc/krb5.conf.d/ exists in response to NCR 360761.
+* Fixed issue in purge playbook relating to wrong var and added var to smbs.yml for cephfs_metadata pool names.

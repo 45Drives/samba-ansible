@@ -1,3 +1,3 @@
-## Samba-ansible 1.1.8-1
+## Samba-ansible 1.1.9-1
 
-* Fixed issue in purge playbook relating to wrong var and added var to smbs.yml for cephfs_metadata pool names.
+* Resolved issue where script would attempt to install Ceph repos when not a cluster member.

@@ -1,3 +1,10 @@
+samba-ansible (1.1.9-1focal) focal; urgency=medium
+
+  * Resolved issue where script would attempt to install Ceph repos when not a cluster
+    member.
+
+ -- Brett Kelly <bkelly@45drives.com>  Thu, 11 Dec 2025 05:43:00 -0400
+
 samba-ansible (1.1.8-1focal) focal; urgency=medium
 
   * Fixed issue in purge playbook relating to wrong var and added var to smbs.yml

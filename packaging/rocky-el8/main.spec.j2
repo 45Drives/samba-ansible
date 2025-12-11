@@ -26,6 +26,9 @@ make DESTDIR=%{buildroot} install
 /usr/share/samba-ansible/*
 
 %changelog
+* Thu Dec 11 2025 Brett Kelly <bkelly@45drives.com> 1.1.9-1
+- Resolved issue where script would attempt to install Ceph repos when not a cluster
+  member.
 * Fri Dec 05 2025 Brett Kelly <bkelly@45drives.com> 1.1.8-1
 - Fixed issue in purge playbook relating to wrong var and added var to smbs.yml for
   cephfs_metadata pool names.

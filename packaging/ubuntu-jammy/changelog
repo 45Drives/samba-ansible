@@ -1,3 +1,9 @@
+samba-ansible (1.1.10-1jammy) jammy; urgency=medium
+
+  * Removed ceph packages from list of packages to remove in purge-smb playbook.
+
+ -- Brett Kelly <bkelly@45drives.com>  Mon, 16 Mar 2026 09:37:38 -0300
+
 samba-ansible (1.1.9-1jammy) jammy; urgency=medium
 
   * Resolved issue where script would attempt to install Ceph repos when not a cluster

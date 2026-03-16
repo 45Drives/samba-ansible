@@ -1,3 +1,3 @@
-## Samba-ansible 1.1.9-1
+## Samba-ansible 1.1.10-1
 
-* Resolved issue where script would attempt to install Ceph repos when not a cluster member.
+* Removed ceph packages from list of packages to remove in purge-smb playbook.

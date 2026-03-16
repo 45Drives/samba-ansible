@@ -26,6 +26,8 @@ make DESTDIR=%{buildroot} install
 /usr/share/samba-ansible/*
 
 %changelog
+* Mon Mar 16 2026 Brett Kelly <bkelly@45drives.com> 1.1.10-1
+- Removed ceph packages from list of packages to remove in purge-smb playbook.
 * Thu Dec 11 2025 Brett Kelly <bkelly@45drives.com> 1.1.9-1
 - Resolved issue where script would attempt to install Ceph repos when not a cluster
   member.
